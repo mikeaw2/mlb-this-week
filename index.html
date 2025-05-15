@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;MLB Weekly Standings by Division&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #f0f0f0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>h1, h2 {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>.division {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-bottom: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>table {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border-collapse: collapse;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>margin-top: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>th, td {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>border: 1px solid #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>padding: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>th {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>background-color: #eee;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1&gt;MLB Weekly Standings by Division&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="standings"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const divisions = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'AL East': [],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'AL Central': [],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'AL West': [],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'NL East': [],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'NL Central': [],</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'NL West': []</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const divisionIds = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'AL East': 201,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'AL Central': 202,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'AL West': 200,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'NL East': 204,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'NL Central': 205,</p>
+<p class="p1"><span class="Apple-converted-space">      </span>'NL West': 203</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const divisionNames = {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>200: 'AL West',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>201: 'AL East',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>202: 'AL Central',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>203: 'NL West',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>204: 'NL East',</p>
+<p class="p1"><span class="Apple-converted-space">      </span>205: 'NL Central'</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Function to get the date of the most recent Saturday</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getLastSaturday() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const today = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const day = today.getDay();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const diff = (day + 1) % 7; // Days since last Saturday</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const lastSaturday = new Date(today);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>lastSaturday.setDate(today.getDate() - diff);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>lastSaturday.setHours(0, 0, 0, 0);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return lastSaturday;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Function to get the date of the upcoming Friday</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getNextFriday() {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const lastSaturday = getLastSaturday();</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const nextFriday = new Date(lastSaturday);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>nextFriday.setDate(lastSaturday.getDate() + 6);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>nextFriday.setHours(23, 59, 59, 999);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>return nextFriday;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Fetch standings data from M</p>
+</body>
+</html>
